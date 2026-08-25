@@ -7,125 +7,173 @@
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<header class="topbar"><strong>What is stressing this plant?</strong><span>Module 3 · Garden walk</span></header>
+<header class="topbar">
+  <strong>What is stressing this plant?</strong>
+  <span id="topStatus">Module 3 · Garden walk</span>
+</header>
+
 <main>
-<section class="page active" data-page="0">
- <div class="hero wrap">
-  <div class="hero-art" aria-hidden="true"><span>🌼</span><span>🌿</span><span>🍅</span><span>🌻</span></div>
-  <p class="eyebrow">A garden walk</p>
-  <h1>Something looks different in the garden.</h1>
-  <p class="lead">Plants can give us clues about stress. But a plant photo rarely tells the whole story.</p>
-  <div class="note-card"><strong>At each stop:</strong> look at the plant, check the weather clue, then decide what may be stressing it.</div>
-  <button class="primary" data-next>Start the garden walk →</button>
- </div>
-</section>
-
-<section class="page" data-page="1">
- <div class="wrap">
-  <p class="eyebrow">Your garden route</p>
-  <h1>Five stops. Five garden clues.</h1>
-  <p class="lead short">You’ll move through the garden one stop at a time.</p>
-  <div class="roadmap">
-   <div class="stop current"><b>1</b><span>Tomatoes</span></div><div class="dash"></div>
-   <div class="stop"><b>2</b><span>Squash</span></div><div class="dash"></div>
-   <div class="stop"><b>3</b><span>Bed</span></div><div class="dash"></div>
-   <div class="stop"><b>4</b><span>New growth</span></div><div class="dash"></div>
-   <div class="stop"><b>5</b><span>After storm</span></div>
+<section class="page active" data-page="intro">
+  <div class="wrap intro-grid">
+    <div class="journal-art" aria-hidden="true">
+      <span class="bigflower">🌻</span><span class="smallflower">🌼</span><span class="sprig">🌿</span>
+      <div class="paper-note">LOOK<br><strong>at the plant</strong><br>+<br>CHECK<br><strong>the conditions</strong></div>
+    </div>
+    <div>
+      <p class="eyebrow">A garden walk</p>
+      <h1>Something looks different in the garden.</h1>
+      <p class="lead">Plants give us clues—but a symptom by itself rarely tells us the cause.</p>
+      <div class="how">
+        <strong>At each stop:</strong>
+        <span>① Look at the plant.</span>
+        <span>② Check the conditions.</span>
+        <span>③ Choose the explanation best supported by the evidence.</span>
+      </div>
+      <button class="primary" id="start">Enter the garden →</button>
+    </div>
   </div>
-  <div class="garden-sketch" aria-hidden="true">🌷　🌿　🍅　🪴　🌻　🌱</div>
-  <button class="primary" data-next>Walk to stop 1 →</button>
- </div>
 </section>
 
-<section class="page scenario" data-page="2" data-stop="1">
- <div class="wrap">
-  <div class="scenario-head"><div><p class="eyebrow">Stop 1 · Tomatoes</p><h1>The flowers are dropping.</h1></div><span class="plant-doodle">🍅</span></div>
+<section class="page" data-page="map">
+  <div class="wrap">
+    <p class="eyebrow">Garden map</p>
+    <h1>Follow the path through the garden.</h1>
+    <p class="map-help">When the boots reach the next plant, that stop will open.</p>
+
+    <div class="garden-map" id="gardenMap">
+      <svg class="path-svg" viewBox="0 0 1000 520" aria-hidden="true">
+        <path d="M140 390 C235 440 280 280 390 310 C500 340 535 435 650 325 C735 245 775 155 865 205"
+              fill="none" stroke="#a89576" stroke-width="10" stroke-linecap="round" stroke-dasharray="4 22"/>
+      </svg>
+      <div class="bed bed1"></div><div class="bed bed2"></div>
+      <div class="pond" aria-hidden="true">〰</div>
+      <span class="decor d1" aria-hidden="true">🌼</span><span class="decor d2" aria-hidden="true">🌷</span>
+      <span class="decor d3" aria-hidden="true">🌻</span><span class="decor d4" aria-hidden="true">🌸</span>
+      <span class="decor d5" aria-hidden="true">🌿</span>
+
+      <button class="map-stop s1" data-stop="1"><span class="icon">🍅</span><b>1</b><small>Tomatoes</small><i></i></button>
+      <button class="map-stop s2" data-stop="2" disabled><span class="icon">🌿</span><b>2</b><small>Squash</small><i></i></button>
+      <button class="map-stop s3" data-stop="3" disabled><span class="icon">🥬</span><b>3</b><small>Low bed</small><i></i></button>
+      <button class="map-stop s4" data-stop="4" disabled><span class="icon">🌱</span><b>4</b><small>New growth</small><i></i></button>
+
+      <div class="boots at1" id="boots" aria-hidden="true">👢</div>
+    </div>
+    <p id="arrival" class="arrival" aria-live="polite">Stop 1 is ready. Select the tomatoes to begin.</p>
+  </div>
+</section>
+
+<section class="page scenario" data-page="stop1">
+<div class="wrap">
+  <div class="scenario-head"><div><p class="eyebrow">Stop 1 · Tomatoes</p><h1>Flowers are dropping and fruit set is poor.</h1></div><span class="scenario-icon" aria-hidden="true">🍅</span></div>
   <div class="evidence-grid">
-   <figure class="photo placeholder heat"><div class="photo-label">REAL PHOTO SLOT<br><small>tomato blossom drop</small></div><figcaption>Look closely at what the plant is doing.</figcaption></figure>
-   <aside class="weather-card"><span>☀️ WEATHER CLUE</span><strong>Several days above 90°F</strong><p>Nights have also stayed unusually warm.</p></aside>
+    <figure class="photo-slot tomato">
+      <div class="slot-label">REAL PHOTO SLOT<br><small>tomato blossom drop / poor fruit set</small></div>
+      <figcaption><strong>Plant observation:</strong> Flowers formed, but many dropped without setting fruit.</figcaption>
+    </figure>
+    <section class="conditions"><h2>Recent conditions</h2><dl>
+      <div><dt>Daytime high</dt><dd>96–101°F</dd></div>
+      <div><dt>Nighttime low</dt><dd>72–76°F</dd></div>
+      <div><dt>Precipitation</dt><dd>0.10 in / 10 days</dd></div>
+      <div><dt>Soil moisture</dt><dd>Moderate</dd></div>
+      <div><dt>Recent event</dt><dd>5-day heat wave</dd></div>
+    </dl></section>
   </div>
-  <div class="question"><h2>What is the strongest climate-related clue?</h2>
-   <div class="choices" data-answer="heat">
-    <button data-value="water">💧 Too much water</button><button data-value="heat">🌡️ High temperature</button>
-    <button data-value="cold">❄️ Cold/frost</button><button data-value="unknown">🔎 Not enough evidence</button>
-   </div><div class="feedback"></div>
-  </div>
-  <button class="primary continue hidden" data-walk="1">Continue through the garden →</button>
- </div>
-</section>
-
-<section class="page walk" data-page="3">
- <div class="wrap walk-wrap">
-  <p class="eyebrow">On to the next stop</p><h1>Follow the garden path…</h1>
-  <div class="path-stage" aria-hidden="true"><div class="trail"></div><div class="walker">👢</div><div class="flower f1">🌼</div><div class="flower f2">🌷</div><div class="flower f3">🌻</div><div class="destination">🌿</div></div>
-  <p class="walk-caption">You’ve used one clue. The next plant may need a little more detective work.</p>
-  <button class="primary" data-next>Arrive at stop 2 →</button>
- </div>
-</section>
-
-<section class="page scenario" data-page="4" data-stop="2">
- <div class="wrap">
-  <div class="scenario-head"><div><p class="eyebrow">Stop 2 · Squash</p><h1>The leaves are wilted by afternoon.</h1></div><span class="plant-doodle">🌿</span></div>
+  <section class="question-card">
+    <span class="stamp">WEIGH THE CLUES</span><h2>Which explanation is best supported?</h2>
+    <div class="choices" data-stop="1" data-correct="b">
+      <button data-value="a">Low rainfall is the strongest explanation because flower drop usually means the plant is short of water.</button><button data-value="b">Sustained high daytime and nighttime temperatures likely interfered with pollination and fruit set.</button><button data-value="c">Moderate soil moisture suggests roots are staying wet enough to cause flower loss.</button><button data-value="d">The evidence points more strongly to a plant disease than to environmental stress.</button>
+    </div><div class="feedback" aria-live="polite"></div>
+  </section>
+  <button class="primary return hidden" data-complete="1">Return to the garden map →</button>
+</div></section><section class="page scenario" data-page="stop2">
+<div class="wrap">
+  <div class="scenario-head"><div><p class="eyebrow">Stop 2 · Squash</p><h1>The leaves wilt every afternoon.</h1></div><span class="scenario-icon" aria-hidden="true">🌿</span></div>
   <div class="evidence-grid">
-   <figure class="photo placeholder wilt"><div class="photo-label">REAL PHOTO SLOT<br><small>wilted squash/cucurbit</small></div><figcaption>The plant looks thirsty—but is it?</figcaption></figure>
-   <aside class="weather-card"><span>🌡️ WEATHER + SITE CLUE</span><strong>Hot afternoon, moist soil</strong><p>The plant looks better again the next morning.</p></aside>
+    <figure class="photo-slot squash">
+      <div class="slot-label">REAL PHOTO SLOT<br><small>afternoon-wilted squash or cucurbit</small></div>
+      <figcaption><strong>Plant observation:</strong> Leaves droop late in the day but look normal again the next morning.</figcaption>
+    </figure>
+    <section class="conditions"><h2>Recent conditions</h2><dl>
+      <div><dt>Daytime high</dt><dd>94–97°F</dd></div>
+      <div><dt>Nighttime low</dt><dd>64–67°F</dd></div>
+      <div><dt>Precipitation</dt><dd>0.35 in / 7 days</dd></div>
+      <div><dt>Soil moisture</dt><dd>Moist</dd></div>
+      <div><dt>Recent event</dt><dd>No storm or freeze</dd></div>
+    </dl></section>
   </div>
-  <div class="question"><h2>What does the evidence suggest?</h2>
-   <div class="choices" data-answer="heat"><button data-value="dry">💧 The soil must be dry</button><button data-value="heat">🌡️ Heat stress is plausible</button><button data-value="flood">🌧️ Too much rain</button><button data-value="unknown">🔎 The photo alone proves the cause</button></div><div class="feedback"></div>
-  </div><button class="primary continue hidden" data-next>Next stop →</button>
- </div>
-</section>
-
-<section class="page scenario" data-page="5" data-stop="3">
- <div class="wrap">
-  <div class="scenario-head"><div><p class="eyebrow">Stop 3 · Low garden bed</p><h1>Plants are yellowing after a wet stretch.</h1></div><span class="plant-doodle">💧</span></div>
+  <section class="question-card">
+    <span class="stamp">WEIGH THE CLUES</span><h2>Which explanation is best supported?</h2>
+    <div class="choices" data-stop="2" data-correct="b">
+      <button data-value="a">The plant is probably experiencing drought stress because wilting is evidence that the soil lacks water.</button><button data-value="b">High afternoon heat may be driving water loss faster than the plant can temporarily replace it.</button><button data-value="c">Root stress from excess water is the best fit because the soil is moist.</button><button data-value="d">A vascular or root disease is possible, and the evidence makes it more likely than temporary heat stress.</button>
+    </div><div class="feedback" aria-live="polite"></div>
+  </section>
+  <button class="primary return hidden" data-complete="2">Return to the garden map →</button>
+</div></section><section class="page scenario" data-page="stop3">
+<div class="wrap">
+  <div class="scenario-head"><div><p class="eyebrow">Stop 3 · Low garden bed</p><h1>Growth has slowed and lower leaves are yellowing.</h1></div><span class="scenario-icon" aria-hidden="true">🥬</span></div>
   <div class="evidence-grid">
-   <figure class="photo placeholder wet"><div class="photo-label">REAL PHOTO SLOT<br><small>waterlogged garden plant</small></div><figcaption>Notice the plant and the soil around it.</figcaption></figure>
-   <aside class="weather-card"><span>🌧️ WEATHER CLUE</span><strong>Repeated heavy rain</strong><p>The soil has stayed saturated for several days.</p></aside>
+    <figure class="photo-slot wet">
+      <div class="slot-label">REAL PHOTO SLOT<br><small>yellowing plants in saturated soil</small></div>
+      <figcaption><strong>Plant observation:</strong> Several plants are yellowing; some look wilted even though the soil is wet.</figcaption>
+    </figure>
+    <section class="conditions"><h2>Recent conditions</h2><dl>
+      <div><dt>Daytime high</dt><dd>72–78°F</dd></div>
+      <div><dt>Nighttime low</dt><dd>52–58°F</dd></div>
+      <div><dt>Precipitation</dt><dd>3.4 in / 10 days</dd></div>
+      <div><dt>Soil moisture</dt><dd>Saturated</dd></div>
+      <div><dt>Recent event</dt><dd>Repeated heavy rain</dd></div>
+    </dl></section>
   </div>
-  <div class="question"><h2>Which condition is most relevant?</h2>
-   <div class="choices" data-answer="wet"><button data-value="heat">🌡️ High temperature</button><button data-value="wet">💧 Excess water</button><button data-value="cold">❄️ Frost</button><button data-value="unknown">🔎 No useful clue</button></div><div class="feedback"></div>
-  </div><button class="primary continue hidden" data-next>Next stop →</button>
- </div>
-</section>
-
-<section class="page scenario" data-page="6" data-stop="4">
- <div class="wrap">
-  <div class="scenario-head"><div><p class="eyebrow">Stop 4 · Tender new growth</p><h1>Yesterday it looked fine.</h1></div><span class="plant-doodle">🌱</span></div>
+  <section class="question-card">
+    <span class="stamp">WEIGH THE CLUES</span><h2>Which explanation is best supported?</h2>
+    <div class="choices" data-stop="3" data-correct="b">
+      <button data-value="a">Warm daytime temperatures are increasing water loss enough to explain the wilting.</button><button data-value="b">Saturated soil may be limiting oxygen around roots, interfering with normal root function.</button><button data-value="c">The plants are most likely short of water because wilting usually indicates drought.</button><button data-value="d">The weather evidence is unrelated; yellow leaves establish that a nutrient deficiency is the cause.</button>
+    </div><div class="feedback" aria-live="polite"></div>
+  </section>
+  <button class="primary return hidden" data-complete="3">Return to the garden map →</button>
+</div></section><section class="page scenario" data-page="stop4">
+<div class="wrap">
+  <div class="scenario-head"><div><p class="eyebrow">Stop 4 · Tender new growth</p><h1>Leaf edges are dark and damaged after a cold morning.</h1></div><span class="scenario-icon" aria-hidden="true">🌱</span></div>
   <div class="evidence-grid">
-   <figure class="photo placeholder frost"><div class="photo-label">REAL PHOTO SLOT<br><small>frost-damaged foliage</small></div><figcaption>New leaves are dark, limp, and damaged.</figcaption></figure>
-   <aside class="weather-card"><span>❄️ WEATHER CLUE</span><strong>An unusually late freeze</strong><p>Temperatures fell below freezing overnight.</p></aside>
+    <figure class="photo-slot frost">
+      <div class="slot-label">REAL PHOTO SLOT<br><small>damaged tender spring growth</small></div>
+      <figcaption><strong>Plant observation:</strong> Young leaves are darkened and limp in exposed parts of the plant; older protected foliage looks less affected.</figcaption>
+    </figure>
+    <section class="conditions"><h2>Recent conditions</h2><dl>
+      <div><dt>Daytime high</dt><dd>58–63°F</dd></div>
+      <div><dt>Nighttime low</dt><dd>29–31°F</dd></div>
+      <div><dt>Precipitation</dt><dd>0.25 in / 7 days</dd></div>
+      <div><dt>Soil moisture</dt><dd>Moist</dd></div>
+      <div><dt>Recent event</dt><dd>One below-freezing night</dd></div>
+    </dl></section>
   </div>
-  <div class="question"><h2>What is the strongest explanation?</h2>
-   <div class="choices" data-answer="cold"><button data-value="heat">🌡️ Heat</button><button data-value="wet">💧 Excess water</button><button data-value="cold">❄️ Freeze/cold</button><button data-value="unknown">🔎 Not enough evidence</button></div><div class="feedback"></div>
-  </div><button class="primary continue hidden" data-next>Next stop →</button>
- </div>
-</section>
+  <section class="question-card">
+    <span class="stamp">WEIGH THE CLUES</span><h2>Which explanation is best supported?</h2>
+    <div class="choices" data-stop="4" data-correct="b">
+      <button data-value="a">The week has been relatively dry, so lack of precipitation best explains the sudden tissue damage.</button><button data-value="b">A brief freeze likely injured tender exposed tissue, especially because damage appeared after the cold night.</button><button data-value="c">Moist soil most likely caused root injury that appeared suddenly in only the newest exposed leaves.</button><button data-value="d">The evidence is too weak to connect the timing and pattern of damage with the cold event.</button>
+    </div><div class="feedback" aria-live="polite"></div>
+  </section>
+  <button class="primary return hidden" data-complete="4">Return to the garden map →</button>
+</div></section>
 
-<section class="page scenario" data-page="7" data-stop="5">
- <div class="wrap">
-  <div class="scenario-head"><div><p class="eyebrow">Stop 5 · After the storm</p><h1>Leaves are torn and stems are broken.</h1></div><span class="plant-doodle">⛈️</span></div>
-  <div class="evidence-grid">
-   <figure class="photo placeholder hail"><div class="photo-label">REAL PHOTO SLOT<br><small>hail-damaged garden plant</small></div><figcaption>The damage appeared suddenly.</figcaption></figure>
-   <aside class="weather-card"><span>⛈️ WEATHER CLUE</span><strong>A severe hailstorm passed through</strong><p>The garden was intact the day before.</p></aside>
+<section class="page" data-page="finish">
+  <div class="wrap finish">
+    <div class="finish-flowers" aria-hidden="true">🌼　🌿　🌻　🌷</div>
+    <p class="eyebrow">Garden walk complete</p>
+    <h1>The plant is a clue—not the whole answer.</h1>
+    <p class="lead">Temperature, precipitation, and extreme weather can stress plants in different ways. Looking at <strong>the plant + the weather conditions</strong> gives you better evidence than appearance alone.</p>
+    <div class="takeaway">
+      <div><span>🌡️</span><strong>Temperature</strong></div>
+      <div><span>💧</span><strong>Precipitation & water</strong></div>
+      <div><span>⛈️</span><strong>Extreme weather</strong></div>
+      <div><span>🔎</span><strong>Evidence together</strong></div>
+    </div>
+    <div class="next-card"><strong>You’ve connected plant responses with conditions that may be contributing to stress.</strong><br>Next, we’ll consider what gardeners can do to help plants cope with those conditions.</div>
+    <button class="secondary" id="restart">Walk the garden again</button>
   </div>
-  <div class="question"><h2>Which kind of stress best fits?</h2>
-   <div class="choices" data-answer="storm"><button data-value="heat">🌡️ Temperature</button><button data-value="water">💧 Water</button><button data-value="storm">⛈️ Weather extreme</button><button data-value="unknown">🔎 No connection</button></div><div class="feedback"></div>
-  </div><button class="primary continue hidden" data-next>Finish the walk →</button>
- </div>
-</section>
-
-<section class="page" data-page="8">
- <div class="wrap finish">
-  <div class="hero-art" aria-hidden="true"><span>🌷</span><span>🌿</span><span>🌻</span></div>
-  <p class="eyebrow">Garden walk complete</p><h1>The plant is a clue—not the whole answer.</h1>
-  <p class="lead">Temperature, water, and weather extremes can stress plants in different ways. Looking at <strong>the plant + recent conditions + the site</strong> gives you better evidence than appearance alone.</p>
-  <div class="takeaway"><span>🌡️ Temperature</span><span>💧 Water</span><span>⛈️ Weather extremes</span><span>🔎 More evidence may be needed</span></div>
-  <p class="bridge">Next, you’ll use climate and weather evidence to explain a plant response—and later consider what a gardener can do about it.</p>
-  <button class="secondary" id="restart">Walk the garden again</button>
- </div>
 </section>
 </main>
-<nav class="bottom-nav" aria-label="Activity navigation"><button id="back" aria-label="Previous page">← Back</button><span id="progress">1 of 9</span></nav>
+
+<nav class="bottom"><button id="back">← Back</button><span id="progress">Start</span></nav>
 <script src="app.js"></script>
 </body></html>
