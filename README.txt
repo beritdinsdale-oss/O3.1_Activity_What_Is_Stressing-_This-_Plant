@@ -13,3 +13,9 @@ v5
 - Garden map is now based on one cohesive illustrated garden image rather than CSS-drawn beds/trees/shed.
 - Interactive stop markers and garden wellies are separate HTML overlays.
 - Same garden artwork is reused behind the conclusion without interactive markers.
+
+v6
+- Fixed title-page step layout: number + icon + text are aligned in one row.
+- Rebuilt map stop markers so they appear as compact overlays rather than bottom buttons.
+- Rebuilt garden wellies as larger, high-contrast overlays.
+- Restored interactive progression: complete scenario -> return to garden -> brief pause -> boots move -> next stop unlocks.
