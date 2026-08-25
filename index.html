@@ -10,18 +10,18 @@
       <div class="simple-step"><span class="simple-num">3</span><span class="simple-icon" aria-hidden="true">?</span><p><strong>Weigh the evidence</strong> and choose the best-supported explanation.</p></div>
     </section>
  <aside class="note"><b>A note before you begin</b><p>Plant symptoms can have many causes. In a real garden, you would consider pests, disease, soil, plant care, and other factors—not just weather. <strong>For this activity, focus on the weather or climate-related explanation best supported by the clues provided.</strong></p></aside>
- <button class="primary" id="start" type="button" onclick="show('map')">Enter the garden →</button></div></div></section>
+ <button class="primary" id="start" type="button" onclick="showPage('map')">Enter the garden →</button></div></div></section>
 
 <section class="page" id="map"><div class="wrap">
       <p class="eyebrow">GARDEN MAP</p>
       <h1>Follow the path through the garden.</h1>
-      <p class="map-copy">Return here after each plant. Return here after each plant. The garden boots will move toward your next stop.</p>
+      <p class="map-copy">Return here after each plant. Return here after each plant. The garden boots will move to your next stop.</p>
       <div class="garden-photo-map" id="gardenMap" aria-label="Illustrated vegetable and flower garden">
         <img src="assets/garden-background.jpg" alt="">
-        <button class="map-hotspot h1" data-n="1" aria-label="Stop 1: Tomatoes"></button>
-        <button class="map-hotspot h2" data-n="2" aria-label="Stop 2: Cucumber" disabled></button>
-        <button class="map-hotspot h3" data-n="3" aria-label="Stop 3: Pepper" disabled></button>
-        <button class="map-hotspot h4" data-n="4" aria-label="Stop 4: Tender growth" disabled></button>
+        <button class="map-hotspot h1" data-n="1" aria-label="Stop 1: Tomatoes" type="button" onclick="openStop(1)"></button>
+        <button class="map-hotspot h2" data-n="2" aria-label="Stop 2: Cucumber" type="button" onclick="openStop(2)" disabled></button>
+        <button class="map-hotspot h3" data-n="3" aria-label="Stop 3: Pepper" type="button" onclick="openStop(3)" disabled></button>
+        <button class="map-hotspot h4" data-n="4" aria-label="Stop 4: Tender growth" type="button" onclick="openStop(4)" disabled></button>
         <div class="wellies pos1" id="wellies" aria-hidden="true"><i></i><i></i></div>
       </div>
       <p class="arrival" id="arrival" aria-live="polite">Stop 1 is ready. Select the tomatoes to begin.</p>

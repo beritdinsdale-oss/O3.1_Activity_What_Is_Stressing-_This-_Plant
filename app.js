@@ -1,27 +1,34 @@
 
-let current = "intro";
-let completed = 0;
 const pages = [...document.querySelectorAll(".page")];
 const arrival = document.getElementById("arrival");
 const wellies = document.getElementById("wellies");
 const navMap = document.getElementById("navMap");
+let unlocked = 1;
 
-function show(id){
-  current = id;
+function showPage(id){
   pages.forEach(p => p.classList.toggle("active", p.id === id));
-  navMap.style.visibility = id === "intro" ? "hidden" : "visible";
+  if (navMap) navMap.style.visibility = id === "intro" ? "hidden" : "visible";
   window.scrollTo({top:0, behavior:"smooth"});
 }
 
-function marker(n){
+function hotspot(n){
   return document.querySelector(`.map-hotspot[data-n="${n}"]`);
 }
 
-document.querySelectorAll(".map-hotspot").forEach(btn => {
-  btn.addEventListener("click", () => {
-    if (!btn.disabled) show("stop" + btn.dataset.n);
-  });
-});
+function openStop(n){
+  const target = hotspot(n);
+  if (!target || target.disabled || n > unlocked) return;
+  showPage("stop" + n);
+}
+
+function unlockStop(n){
+  unlocked = Math.max(unlocked, n);
+  const target = hotspot(n);
+  if (target){
+    target.disabled = false;
+    target.classList.add("ready");
+  }
+}
 
 document.querySelectorAll(".question").forEach(q => {
   const correct = Number(q.dataset.correct);
@@ -42,39 +49,33 @@ document.querySelectorAll(".question").forEach(q => {
 document.querySelectorAll(".return").forEach(btn => {
   btn.addEventListener("click", () => {
     const n = Number(btn.dataset.n);
-    completed = Math.max(completed, n);
-    marker(n).classList.add("done");
 
     if (n === 4){
-      show("finish");
+      showPage("finish");
       return;
     }
 
-    show("map");
     const next = n + 1;
-    const nextMarker = marker(next);
-    nextMarker.disabled = true;
-    nextMarker.classList.remove("ready");
-
+    showPage("map");
     arrival.textContent = "Heading to the next garden area…";
 
-    // Brief pause after returning to the garden, then move the boots.
     setTimeout(() => {
       wellies.className = "wellies pos" + next;
-    }, 350);
+    }, 300);
 
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     setTimeout(() => {
-      nextMarker.disabled = false;
-      nextMarker.classList.add("ready");
+      unlockStop(next);
       arrival.textContent = `Stop ${next} is ready. Select the next numbered garden area to continue.`;
-    }, reduced ? 450 : 1900);
+    }, reduced ? 400 : 1750);
   });
 });
 
-document.getElementById("start")?.addEventListener("click", () => show("map"));
-navMap.addEventListener("click", () => show("map"));
+if (navMap){
+  navMap.addEventListener("click", () => showPage("map"));
+}
 
-show("intro");
+window.showPage = showPage;
+window.openStop = openStop;
 
-window.show = show;
+showPage("intro");

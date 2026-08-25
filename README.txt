@@ -23,3 +23,8 @@ v6
 v7
 - Simplified title-page steps to number + icon + text on one row.
 - Enter the Garden button now uses a direct onclick handler with global show() fallback.
+
+v9
+- Re-cropped the garden image to include the full bottom edge.
+- Forced natural image aspect ratio with no vertical cropping.
+- Boots now move between four independent overlay positions rather than following the illustrated path.
