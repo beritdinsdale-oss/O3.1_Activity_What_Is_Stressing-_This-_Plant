@@ -70,3 +70,17 @@
 .simple-step p{margin:0;line-height:1.4;font-size:1rem}
 .simple-step strong{font-family:Georgia,serif}
 @media(max-width:700px){.simple-step{grid-template-columns:32px 34px 1fr}}
+
+/* v8: use the labels already present in the illustration; no duplicate marker graphics */
+.garden-photo-map{overflow:visible;margin-bottom:34px}
+.garden-photo-map>img{width:100%;height:auto;display:block;border-radius:19px}
+.map-hotspot{position:absolute;z-index:10;background:transparent;border:0;border-radius:50%;cursor:pointer;width:84px;height:84px}
+.map-hotspot:disabled{cursor:default}
+.map-hotspot:not(:disabled):focus-visible{outline:5px solid #fff;box-shadow:0 0 0 8px #6c4e70}
+.h1{left:17%;top:66%}.h2{left:39%;top:38%}.h3{left:66%;top:41%}.h4{right:7%;top:55%}
+#map.page{padding-bottom:150px}
+#map .wrap{padding-bottom:30px}
+@media(max-width:800px){
+  .map-hotspot{width:64px;height:64px}
+  #map.page{padding-bottom:130px}
+}

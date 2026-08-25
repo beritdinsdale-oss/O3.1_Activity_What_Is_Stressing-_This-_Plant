@@ -14,10 +14,10 @@ function show(id){
 }
 
 function marker(n){
-  return document.querySelector(`.map-marker[data-n="${n}"]`);
+  return document.querySelector(`.map-hotspot[data-n="${n}"]`);
 }
 
-document.querySelectorAll(".map-marker").forEach(btn => {
+document.querySelectorAll(".map-hotspot").forEach(btn => {
   btn.addEventListener("click", () => {
     if (!btn.disabled) show("stop" + btn.dataset.n);
   });
@@ -67,7 +67,7 @@ document.querySelectorAll(".return").forEach(btn => {
     setTimeout(() => {
       nextMarker.disabled = false;
       nextMarker.classList.add("ready");
-      arrival.textContent = `Stop ${next} is ready. Select ${nextMarker.querySelector("small").textContent.toLowerCase()} to continue.`;
+      arrival.textContent = `Stop ${next} is ready. Select the next numbered garden area to continue.`;
     }, reduced ? 450 : 1900);
   });
 });
