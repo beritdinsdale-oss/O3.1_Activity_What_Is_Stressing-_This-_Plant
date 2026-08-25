@@ -59,3 +59,14 @@
   .wellies{transition:none}
   .map-marker.ready:not(:disabled){animation:none}
 }
+
+/* v7 simplified title-page steps */
+.simple-steps{margin:24px 0;background:#fff9ed;border:1px solid #dfd1b7;border-radius:20px;padding:20px 22px}
+.simple-steps h2{margin:0 0 14px;font-size:1.3rem}
+.simple-step{display:grid;grid-template-columns:34px 38px 1fr;gap:12px;align-items:center;padding:11px 0;border-bottom:1px dashed #d9ccb8}
+.simple-step:last-child{border-bottom:0}
+.simple-num{width:30px;height:30px;display:grid;place-items:center;border-radius:50%;background:#765779;color:#fff;font-weight:900;font-size:.95rem}
+.simple-icon{font-size:1.45rem;line-height:1;text-align:center}
+.simple-step p{margin:0;line-height:1.4;font-size:1rem}
+.simple-step strong{font-family:Georgia,serif}
+@media(max-width:700px){.simple-step{grid-template-columns:32px 34px 1fr}}

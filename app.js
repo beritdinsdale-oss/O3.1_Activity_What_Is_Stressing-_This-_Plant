@@ -76,3 +76,5 @@ document.getElementById("start")?.addEventListener("click", () => show("map"));
 navMap.addEventListener("click", () => show("map"));
 
 show("intro");
+
+window.show = show;

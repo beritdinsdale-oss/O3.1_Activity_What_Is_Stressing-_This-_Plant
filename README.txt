@@ -19,3 +19,7 @@ v6
 - Rebuilt map stop markers so they appear as compact overlays rather than bottom buttons.
 - Rebuilt garden wellies as larger, high-contrast overlays.
 - Restored interactive progression: complete scenario -> return to garden -> brief pause -> boots move -> next stop unlocks.
+
+v7
+- Simplified title-page steps to number + icon + text on one row.
+- Enter the Garden button now uses a direct onclick handler with global show() fallback.
