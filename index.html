@@ -9,16 +9,19 @@
  <aside class="note"><b>A note before you begin</b><p>Plant symptoms can have many causes. In a real garden, you would consider pests, disease, soil, plant care, and other factors—not just weather. <strong>For this activity, focus on the weather or climate-related explanation best supported by the clues provided.</strong></p></aside>
  <button class="primary" onclick="show('map')">Enter the garden →</button></div></div></section>
 
-<section class="page" id="map"><div class="wrap"><p class="eyebrow">GARDEN MAP</p><h1>Follow the path through the garden.</h1><p class="map-copy">Return here after each plant. The garden boots will walk to your next stop.</p>
- <div class="garden" aria-label="Illustrated vegetable and flower garden with a winding path">
-  <div class="skyline"></div><div class="back-fence"></div><div class="garden-shed"><div class="roof"></div><div class="door"></div><div class="window"></div></div>
-  <div class="tree-canopy tc1"></div><div class="tree-trunk tt1"></div><div class="tree-canopy tc2"></div><div class="tree-trunk tt2"></div>
-  <div class="bed bed1"><div class="plants tomato-plants"></div></div><div class="bed bed2"><div class="trellis"></div><div class="plants vine-plants"></div></div><div class="bed bed3"><div class="plants pepper-plants"></div></div><div class="bed bed4"><div class="plants leafy-plants"></div></div>
-  <div class="flower-border"></div><div class="bench-shape"></div><div class="watering-can"></div>
-  <svg class="path-svg" viewBox="0 0 1000 560" aria-hidden="true"><path id="walkPath" d="M100 445 C180 500 270 410 330 365 C405 310 470 425 555 415 C650 402 675 290 720 240 C770 180 830 175 900 150" fill="none" stroke="#d7c3a1" stroke-width="70" stroke-linecap="round"/><path d="M100 445 C180 500 270 410 330 365 C405 310 470 425 555 415 C650 402 675 290 720 240 C770 180 830 175 900 150" fill="none" stroke="#b49a72" stroke-width="2" stroke-dasharray="5 15"/></svg>
-  <button class="stop s1" data-n="1"><span>1</span><small>Tomatoes</small></button><button class="stop s2" data-n="2" disabled><span>2</span><small>Cucumber</small></button><button class="stop s3" data-n="3" disabled><span>3</span><small>Pepper</small></button><button class="stop s4" data-n="4" disabled><span>4</span><small>Tender growth</small></button>
-  <div id="boots" class="boots b1" aria-hidden="true"><span></span><span></span></div>
- </div><p id="arrival" aria-live="polite">Stop 1 is ready. Select the tomato bed to begin.</p></div></section>
+<section class="page" id="map"><div class="wrap">
+<p class="eyebrow">GARDEN MAP</p><h1>Follow the path through the garden.</h1>
+<p class="map-copy">Return here after each plant. The garden boots will walk to your next stop.</p>
+<div class="garden-photo-map" aria-label="Illustrated vegetable and flower garden with a winding path">
+  <img src="assets/garden-background.jpg" alt="">
+  <button class="photo-stop ps1" data-n="1"><span>1</span><small>Tomatoes</small></button>
+  <button class="photo-stop ps2" data-n="2" disabled><span>2</span><small>Cucumber</small></button>
+  <button class="photo-stop ps3" data-n="3" disabled><span>3</span><small>Pepper</small></button>
+  <button class="photo-stop ps4" data-n="4" disabled><span>4</span><small>Tender growth</small></button>
+  <div id="boots" class="garden-wellies wb1" aria-hidden="true"><i></i><i></i></div>
+</div>
+<p id="arrival" aria-live="polite">Stop 1 is ready. Select the tomato bed to begin.</p>
+</div></section>
 
 <section class="page scenario" id="stop1">
  <div class="wrap">
@@ -108,9 +111,13 @@
   <button class="primary return hidden" data-n="4">Return to the garden →</button>
  </div>
 </section>
-<section class="page" id="finish"><div class="conclusion-garden"><div class="wrap conclusion-wrap">
- <article class="conclusion-paper"><p class="eyebrow">GARDEN WALK COMPLETE</p><h1>Conclusion</h1><p class="takeaway">The plant is a clue—not the whole picture.</p>
- <p>Temperature, precipitation, and extreme weather can stress plants in different ways. Looking at <strong>plant symptoms + weather conditions</strong> gives us more information than appearance alone.</p>
- <div class="climate-summary"><strong>Weather</strong> tells us what conditions the plant experienced. <strong>Climate</strong> helps us understand how those conditions may be changing over time.</div>
- <p>You’ve practiced connecting plant responses with weather and climate conditions. Next, we’ll consider what gardeners can do to help plants cope with those conditions.</p></article>
- </div></div></section></main><nav><button onclick="show('map')">← Garden map</button></nav><script src="app.js"></script></body></html>
+<section class="page conclusion-page" id="finish">
+<div class="conclusion-bg"><img src="assets/garden-background.jpg" alt="">
+<div class="wrap conclusion-wrap">
+<article class="conclusion-paper">
+<p class="eyebrow">GARDEN WALK COMPLETE</p><h1>Conclusion</h1>
+<p class="takeaway">The plant is a clue—not the whole picture.</p>
+<p>Temperature, precipitation, and extreme weather can stress plants in different ways. Looking at <strong>plant symptoms + weather conditions</strong> gives us more information than appearance alone.</p>
+<div class="climate-summary"><strong>Weather</strong> tells us what conditions the plant experienced. <strong>Climate</strong> helps us understand how those conditions may be changing over time.</div>
+<p>You’ve practiced connecting plant responses with weather and climate conditions. Next, we’ll consider what gardeners can do to help plants cope with those conditions.</p>
+</article></div></div></section></main><nav><button onclick="show('map')">← Garden map</button></nav><script src="app.js"></script></body></html>

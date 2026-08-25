@@ -8,3 +8,8 @@ V4 review build
 - Increased question and answer text size/padding.
 - Restored a distinct conclusion page with smaller 'The plant is a clue—not the whole picture' takeaway.
 - Conclusion uses a garden-toned background and has no stops or boots.
+
+v5
+- Garden map is now based on one cohesive illustrated garden image rather than CSS-drawn beds/trees/shed.
+- Interactive stop markers and garden wellies are separate HTML overlays.
+- Same garden artwork is reused behind the conclusion without interactive markers.
