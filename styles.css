@@ -199,3 +199,7 @@
 
 /* v12: animated boots removed */
 .wellies,.garden-wellies,.garden-steps{display:none !important}
+
+/* v13 clean background: no boots anywhere */
+.wellies,.garden-wellies,.garden-steps{display:none!important}
+.garden-photo-map>img{display:block;width:100%;height:auto;object-fit:contain}
