@@ -28,3 +28,9 @@ v9
 - Re-cropped the garden image to include the full bottom edge.
 - Forced natural image aspect ratio with no vertical cropping.
 - Boots now move between four independent overlay positions rather than following the illustrated path.
+
+v11
+- Removed the static boots baked into the garden background.
+- Replaced moving wellies with a simpler illustrated garden-step marker.
+- Set four explicit overlay destinations beside the visible plant-stop labels.
+- Slightly realigned click hotspots to match the visible stop labels.

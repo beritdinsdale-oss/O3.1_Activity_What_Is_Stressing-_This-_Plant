@@ -60,7 +60,7 @@ document.querySelectorAll(".return").forEach(btn => {
     arrival.textContent = "Heading to the next garden area…";
 
     setTimeout(() => {
-      wellies.className = "wellies pos" + next;
+      wellies.className = "garden-steps step" + next;
     }, 300);
 
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
