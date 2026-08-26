@@ -34,3 +34,7 @@ v11
 - Replaced moving wellies with a simpler illustrated garden-step marker.
 - Set four explicit overlay destinations beside the visible plant-stop labels.
 - Slightly realigned click hotspots to match the visible stop labels.
+
+v12
+- Removed animated boots entirely.
+- Garden navigation is now simple sequential unlocking: complete a stop, return to the garden, and the next stop becomes clickable.

@@ -196,3 +196,6 @@
 .h2{left:31% !important;top:28% !important;width:16% !important;height:22% !important}
 .h3{left:59% !important;top:30% !important;width:16% !important;height:22% !important}
 .h4{left:79% !important;top:48% !important;width:16% !important;height:24% !important}
+
+/* v12: animated boots removed */
+.wellies,.garden-wellies,.garden-steps{display:none !important}

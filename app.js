@@ -1,7 +1,6 @@
 
 const pages = [...document.querySelectorAll(".page")];
 const arrival = document.getElementById("arrival");
-const wellies = document.getElementById("wellies");
 const navMap = document.getElementById("navMap");
 let unlocked = 1;
 
@@ -56,18 +55,9 @@ document.querySelectorAll(".return").forEach(btn => {
     }
 
     const next = n + 1;
+    unlockStop(next);
     showPage("map");
-    arrival.textContent = "Heading to the next garden area…";
-
-    setTimeout(() => {
-      wellies.className = "garden-steps step" + next;
-    }, 300);
-
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    setTimeout(() => {
-      unlockStop(next);
-      arrival.textContent = `Stop ${next} is ready. Select the next numbered garden area to continue.`;
-    }, reduced ? 400 : 1750);
+    arrival.textContent = `Stop ${next} is ready. Select the next numbered garden area to continue.`;
   });
 });
 
