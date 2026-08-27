@@ -203,3 +203,354 @@
 /* v13 clean background: no boots anywhere */
 .wellies,.garden-wellies,.garden-steps{display:none!important}
 .garden-photo-map>img{display:block;width:100%;height:auto;object-fit:contain}
+
+/* FINAL GITHUB BUILD — approved garden navigation */
+.garden-nav-stage{
+  position:relative;
+  width:100%;
+  border:8px solid #fffaf0;
+  border-radius:24px;
+  overflow:hidden;
+  box-shadow:0 12px 28px #26382d22;
+  background:#dce7d2;
+  margin-top:20px;
+}
+.garden-nav-image{
+  display:block;
+  width:100%;
+  height:auto;
+}
+.garden-route-overlay{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+}
+.garden-seg{
+  stroke:#6c4e70;
+  stroke-width:6;
+  stroke-dasharray:5 15;
+  stroke-linecap:round;
+  opacity:.92;
+}
+.garden-hotspot{
+  position:absolute;
+  z-index:12;
+  border:0;
+  background:transparent;
+  border-radius:18px;
+  cursor:pointer;
+}
+.garden-hotspot:disabled{
+  cursor:default;
+  pointer-events:none;
+}
+.garden-hotspot:not(:disabled):focus-visible{
+  outline:4px solid #fffaf0;
+  box-shadow:0 0 0 8px #6c4e70;
+}
+/* Click targets centered over baked-in labels */
+.gh1{left:17%;top:56%;width:15%;height:20%}
+.gh2{left:31%;top:29%;width:16%;height:20%}
+.gh3{left:60%;top:30%;width:16%;height:21%}
+.gh4{left:79%;top:48%;width:16%;height:23%}
+
+.garden-walker{
+  position:absolute;
+  z-index:14;
+  width:9%;
+  height:auto;
+  transform:translate(-50%,-50%);
+  transition:left 1.45s ease, top 1.45s ease;
+  pointer-events:none;
+  filter:drop-shadow(0 3px 3px #0004);
+}
+.garden-status{
+  text-align:center;
+  font-weight:800;
+  margin:13px 0 0;
+}
+#map.page{padding-bottom:130px}
+
+@media(prefers-reduced-motion:reduce){
+  .garden-walker{transition:none}
+}
+
+/* v2 compact garden-map view */
+.compact-map-page{
+  padding-top:24px !important;
+  padding-bottom:90px !important;
+  min-height:auto !important;
+}
+.compact-map-page .wrap{
+  max-width:980px !important;
+}
+.compact-map-page h1{
+  font-size:clamp(1.9rem,4vw,3rem) !important;
+  margin-bottom:.45rem !important;
+}
+.compact-map-page .map-copy{
+  margin:.2rem 0 .7rem !important;
+  font-size:1rem !important;
+}
+.garden-nav-stage{
+  margin-top:10px !important;
+  max-height:66vh !important;
+}
+.garden-nav-image{
+  width:100% !important;
+  height:auto !important;
+  max-height:66vh !important;
+  object-fit:contain !important;
+}
+.garden-status{
+  margin-top:8px !important;
+  font-size:.95rem !important;
+}
+
+/* Future stops are visually muted until unlocked */
+.stop-mask{
+  position:absolute;
+  z-index:9;
+  border-radius:18px;
+  background:rgba(245,240,230,.72);
+  backdrop-filter:blur(1px);
+  pointer-events:none;
+  transition:opacity .25s ease;
+}
+.mask2{left:31%;top:29%;width:16%;height:20%}
+.mask3{left:60%;top:30%;width:16%;height:21%}
+.mask4{left:79%;top:48%;width:16%;height:23%}
+.stop-mask.unlocked{
+  opacity:0;
+}
+
+/* Keep active stop/hotspot fully available */
+.garden-hotspot{z-index:13 !important}
+
+/* Slightly reduce boot size to fit compact map */
+.garden-walker{
+  width:8% !important;
+}
+
+@media(max-width:800px){
+  .garden-nav-stage,
+  .garden-nav-image{
+    max-height:none !important;
+  }
+}
+
+/* v3: remove inactive-stop beige masks */
+.stop-mask{display:none !important}
+
+/* Only the currently available stop gets a subtle highlight */
+.garden-hotspot.active-stop{
+  outline:3px solid rgba(255,250,240,.92);
+  box-shadow:0 0 0 6px rgba(108,78,112,.70);
+  animation:activeStopPulse 1.5s ease-in-out 2;
+}
+@keyframes activeStopPulse{
+  0%,100%{box-shadow:0 0 0 6px rgba(108,78,112,.62)}
+  50%{box-shadow:0 0 0 10px rgba(108,78,112,.28)}
+}
+@media(prefers-reduced-motion:reduce){
+  .garden-hotspot.active-stop{animation:none}
+}
+
+/* v4: hotspots are invisible hit areas only */
+.garden-hotspot,
+.garden-hotspot.active-stop,
+.garden-hotspot:not(:disabled):focus-visible{
+  outline:none !important;
+  box-shadow:none !important;
+  background:transparent !important;
+  animation:none !important;
+}
+
+/* separate circular cue centered on the baked-in stop number */
+.active-ring{
+  position:absolute;
+  z-index:16;
+  width:58px;
+  height:58px;
+  border-radius:50%;
+  border:4px solid rgba(108,78,112,.9);
+  box-shadow:0 0 0 4px rgba(255,250,240,.9);
+  transform:translate(-50%,-50%);
+  pointer-events:none;
+  opacity:1;
+}
+.ring1{left:23.5%;top:67%}
+.ring2{left:39.5%;top:39.5%}
+.ring3{left:68%;top:41.5%}
+.ring4{left:88%;top:58%}
+
+.active-ring.pulse{
+  animation:ringPulse 1.2s ease-in-out 2;
+}
+@keyframes ringPulse{
+  0%,100%{
+    transform:translate(-50%,-50%) scale(1);
+    box-shadow:0 0 0 4px rgba(255,250,240,.9);
+  }
+  50%{
+    transform:translate(-50%,-50%) scale(1.18);
+    box-shadow:0 0 0 10px rgba(108,78,112,.18);
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .active-ring.pulse{animation:none}
+}
+
+/* v5: route overlay uses the garden container's exact dimensions */
+.garden-route-overlay{
+  position:absolute !important;
+  inset:0 !important;
+  width:100% !important;
+  height:100% !important;
+  overflow:hidden !important;
+  pointer-events:none !important;
+}
+.garden-nav-stage{
+  overflow:hidden !important;
+}
+
+/* v6: single coordinate system for route + ring + boots */
+.garden-nav-stage{position:relative !important;overflow:hidden !important}
+.garden-route-overlay{
+  position:absolute !important;
+  left:0 !important;top:0 !important;
+  width:100% !important;height:100% !important;
+  overflow:hidden !important;
+  pointer-events:none !important;
+}
+.garden-seg{
+  stroke:#6c4e70 !important;
+  stroke-width:6 !important;
+  vector-effect:non-scaling-stroke;
+  stroke-dasharray:5 15 !important;
+  stroke-linecap:round !important;
+  opacity:.92 !important;
+}
+.active-ring{
+  width:46px !important;height:46px !important;
+  transform:translate(-50%,-50%) !important;
+  border-radius:50% !important;
+}
+.garden-hotspot,.garden-hotspot.active-stop{
+  outline:none !important;box-shadow:none !important;
+  border:0 !important;background:transparent !important;
+}
+
+/* FINAL exact-center garden navigation */
+.compact-map-page{
+  min-height:auto !important;
+  padding:18px 20px 88px !important;
+}
+.exact-map-wrap{
+  max-width:760px !important;
+}
+.exact-map-wrap h1{
+  font-size:clamp(1.9rem,4vw,2.8rem) !important;
+  margin:.15rem 0 .35rem !important;
+}
+.exact-map-wrap .map-copy{
+  margin:.15rem 0 .55rem !important;
+  font-size:.98rem !important;
+}
+.exact-garden-stage{
+  position:relative;
+  width:100%;
+  margin:8px auto 0;
+  border:7px solid #fffaf0;
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 10px 24px rgba(38,56,45,.15);
+  background:#dce7d2;
+}
+.exact-garden-image{
+  display:block;
+  width:100%;
+  height:auto;
+}
+.exact-overlay{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  pointer-events:auto;
+}
+.exact-seg{
+  stroke:#6c4e70;
+  stroke-width:6;
+  stroke-dasharray:5 15;
+  stroke-linecap:round;
+  opacity:.92;
+  vector-effect:non-scaling-stroke;
+  pointer-events:none;
+}
+.exact-ring{
+  fill:none;
+  stroke:#6c4e70;
+  stroke-width:5;
+  vector-effect:non-scaling-stroke;
+  pointer-events:none;
+  transform-box:fill-box;
+  transform-origin:center;
+}
+.exact-ring.pulse{
+  animation:exactRingPulse 1.15s ease-in-out 2;
+}
+@keyframes exactRingPulse{
+  0%,100%{transform:scale(1);opacity:1}
+  50%{transform:scale(1.17);opacity:.55}
+}
+.inactive-cover{
+  fill:rgba(245,240,230,.58);
+  stroke:none;
+  pointer-events:none;
+  transition:opacity .25s ease;
+}
+.inactive-cover.unlocked{
+  opacity:0;
+}
+.svg-hotspot{
+  fill:transparent;
+  stroke:transparent;
+  cursor:pointer;
+  pointer-events:auto;
+}
+.svg-hotspot.locked{
+  pointer-events:none;
+  cursor:default;
+}
+.svg-hotspot:focus{
+  outline:none;
+  stroke:#fffaf0;
+  stroke-width:4;
+}
+.exact-walker{
+  position:absolute;
+  z-index:5;
+  width:8.5%;
+  height:auto;
+  transform:translate(-50%,-50%);
+  transition:left 1.45s ease,top 1.45s ease;
+  pointer-events:none;
+  filter:drop-shadow(0 3px 3px rgba(0,0,0,.25));
+}
+.exact-status{
+  text-align:center;
+  font-weight:800;
+  font-size:.95rem;
+  margin:7px 0 0;
+}
+@media(prefers-reduced-motion:reduce){
+  .exact-walker{transition:none}
+  .exact-ring.pulse{animation:none}
+}
+@media(max-width:700px){
+  .exact-map-wrap{max-width:100% !important}
+  .compact-map-page{padding-top:14px !important}
+}

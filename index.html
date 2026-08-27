@@ -10,22 +10,52 @@
       <div class="simple-step"><span class="simple-num">3</span><span class="simple-icon" aria-hidden="true">?</span><p><strong>Weigh the evidence</strong> and choose the best-supported explanation.</p></div>
     </section>
  <aside class="note"><b>A note before you begin</b><p>Plant symptoms can have many causes. In a real garden, you would consider pests, disease, soil, plant care, and other factors—not just weather. <strong>For this activity, focus on the weather or climate-related explanation best supported by the clues provided.</strong></p></aside>
- <button class="primary" id="start" type="button" onclick="showPage('map')">Enter the garden →</button></div></div></section>
+ <button class="primary" id="start" type="button">Enter the garden →</button></div></div></section>
 
-<section class="page" id="map"><div class="wrap">
-      <p class="eyebrow">GARDEN MAP</p>
-      <h1>Follow the path through the garden.</h1>
-      <p class="map-copy">Return here after each plant. Return here after each plant. The next garden stop will become available.</p>
-      <div class="garden-photo-map" id="gardenMap" aria-label="Illustrated vegetable and flower garden">
-        <img src="assets/garden-background.jpg" alt="">
-        <button class="map-hotspot h1" data-n="1" aria-label="Stop 1: Tomatoes" type="button" onclick="openStop(1)"></button>
-        <button class="map-hotspot h2" data-n="2" aria-label="Stop 2: Cucumber" type="button" onclick="openStop(2)" disabled></button>
-        <button class="map-hotspot h3" data-n="3" aria-label="Stop 3: Pepper" type="button" onclick="openStop(3)" disabled></button>
-        <button class="map-hotspot h4" data-n="4" aria-label="Stop 4: Tender growth" type="button" onclick="openStop(4)" disabled></button>
-        
-      </div>
-      <p class="arrival" id="arrival" aria-live="polite">Stop 1 is ready. Select the tomatoes to begin.</p>
-    </div></section>
+
+
+<section class="page compact-map-page" id="map">
+  <div class="wrap exact-map-wrap">
+    <p class="eyebrow">GARDEN MAP</p>
+    <h1>Walk through the garden.</h1>
+    <p class="map-copy">Once you finish a stop, the next stop will become available.</p>
+
+    <div class="exact-garden-stage" id="gardenStage">
+      <img class="exact-garden-image" src="assets/garden-clean.jpg"
+           alt="Illustrated garden with four numbered plant stops: tomatoes, cucumbers, peppers, and tender planting.">
+
+      <svg class="exact-overlay" viewBox="0 0 1030 839" preserveAspectRatio="xMidYMid meet"
+           aria-label="Garden navigation">
+        <line id="seg12" class="exact-seg"/>
+        <line id="seg23" class="exact-seg"/>
+        <line id="seg34" class="exact-seg"/>
+
+        <circle id="ring" class="exact-ring" r="34"/>
+
+        <circle class="inactive-cover cover2" cx="346" cy="361" r="37" aria-hidden="true"/>
+        <circle class="inactive-cover cover3" cx="635" cy="349" r="37" aria-hidden="true"/>
+        <circle class="inactive-cover cover4" cx="889" cy="552" r="37" aria-hidden="true"/>
+
+        <circle class="svg-hotspot" data-stop="1" cx="151" cy="599" r="48"
+                tabindex="0" role="button" aria-label="Open Stop 1: Tomatoes"/>
+        <circle class="svg-hotspot locked" data-stop="2" cx="346" cy="361" r="48"
+                tabindex="-1" role="button" aria-label="Open Stop 2: Cucumbers"/>
+        <circle class="svg-hotspot locked" data-stop="3" cx="635" cy="349" r="48"
+                tabindex="-1" role="button" aria-label="Open Stop 3: Peppers"/>
+        <circle class="svg-hotspot locked" data-stop="4" cx="889" cy="552" r="48"
+                tabindex="-1" role="button" aria-label="Open Stop 4: Tender planting"/>
+      </svg>
+
+      <img id="gardenWalker" class="exact-walker" src="assets/boots-1.png" alt="">
+    </div>
+
+    <p id="gardenStatus" class="exact-status" aria-live="polite">
+      Stop 1 is ready. Select the tomatoes to begin.
+    </p>
+  </div>
+</section>
+
+
 
 <section class="page scenario" id="stop1">
  <div class="wrap">
@@ -116,7 +146,7 @@
  </div>
 </section>
 <section class="page conclusion-page" id="finish">
-<div class="conclusion-bg"><img src="assets/garden-background.jpg" alt="">
+<div class="conclusion-bg"><img src="assets/garden-clean.jpg" alt="">
 <div class="wrap conclusion-wrap">
 <article class="conclusion-paper">
 <p class="eyebrow">GARDEN WALK COMPLETE</p><h1>Conclusion</h1>
@@ -124,4 +154,4 @@
 <p>Temperature, precipitation, and extreme weather can stress plants in different ways. Looking at <strong>plant symptoms + weather conditions</strong> gives us more information than appearance alone.</p>
 <div class="climate-summary"><strong>Weather</strong> tells us what conditions the plant experienced. <strong>Climate</strong> helps us understand how those conditions may be changing over time.</div>
 <p>You’ve practiced connecting plant responses with weather and climate conditions. Next, we’ll consider what gardeners can do to help plants cope with those conditions.</p>
-</article></div></div></section></main><nav><button id="navMap">← Garden map</button></nav><script src="app.js"></script></body></html>
+</article></div></div></section></main><nav><button id="navMap" type="button">← Garden map</button></nav><script src="app.js"></script></body></html>
