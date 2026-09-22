@@ -554,3 +554,7 @@
   .exact-map-wrap{max-width:100% !important}
   .compact-map-page{padding-top:14px !important}
 }
+
+/* Conclusion exit: returns learners to the Canvas modules page and escapes the iframe. */
+.conclusion-return{display:inline-block;margin-top:12px;text-decoration:none}
+.conclusion-return:focus-visible{outline:4px solid #6c4e70;outline-offset:4px}
